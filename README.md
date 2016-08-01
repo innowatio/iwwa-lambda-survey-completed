@@ -16,7 +16,7 @@ This project deployment is automated with Lambdafile. For more info [`lambda-boi
 The following environment variables are needed to configure the function:
 
 - `MONGODB_URL` __string__ *required*: URL of the MongoDB endpoint
-- `DEBUG` __boolean__ *optional*: set to `true` if you want more log from [`kinesis-router`](https://github.com/lk-architecture/kkinesis-router/).
+- `DEBUG` __boolean__ *optional*: set to `true` if you want more log from [`kinesis-router`](https://github.com/lk-architecture/kinesis-router/).
 
 ### Run test
 
