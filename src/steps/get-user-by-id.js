@@ -1,8 +1,8 @@
 import {USERS_COLLECTION_NAME} from "../config";
-import {mongodb} from "../services/mongodb";
+import {getMongoClient} from "../services/mongodb";
 
 export default async function getUserById (userId) {
-    const db = await mongodb;
+    const db = await getMongoClient();
     const query = {
         "_id": userId
     };

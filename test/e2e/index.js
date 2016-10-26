@@ -1,7 +1,7 @@
 import {expect} from "chai";
 
 import {handler} from "index";
-import {mongodb} from "services/mongodb";
+import {getMongoClient} from "services/mongodb";
 import {USERS_COLLECTION_NAME} from "config";
 import {getAnswers} from "../utils";
 import {getEventFromObject, run} from "../mocks";
@@ -13,17 +13,17 @@ describe("On answers", () => {
     var db;
 
     before(async () => {
-        db = await mongodb;
+        db = await getMongoClient();
         users = db.collection(USERS_COLLECTION_NAME);
     });
 
     after(async () => {
-        db.dropCollection(USERS_COLLECTION_NAME);
+        await db.dropCollection(USERS_COLLECTION_NAME);
         await db.close();
     });
 
     afterEach(async () => {
-        users.remove({});
+        await users.remove({});
     });
 
     it("skip if reading type is not `survey`", async () => {
